@@ -1,0 +1,20 @@
+#!/bin/bash
+
+
+#Librerias que pide GSI
+export NETCDF=/usr/local/
+export LAPACK_PATH=/home/jruiz/share/lapack/2.5.4/gcc/
+
+#Variables para que todo ande en Hydra (con suerte
+export FC=mpif90
+export CXX=mpicxx
+export CC=mpicc
+export F90=mpif90
+
+#Creo la carpeta donde se va a compilar todo
+rm -fr ./build
+mkdir -p build
+cd build
+
+cmake -VERBOSE=1 ../  -DBUILD_WRF=ON #Por defecto EnKF se compila con la opcion GFS
+make
