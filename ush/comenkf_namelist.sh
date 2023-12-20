@@ -46,14 +46,13 @@ cat <<EOF > enkf.nml
   nvars               = 5,
   deterministic       = .true.,
   sortinc             = .true.,
-  univaroz            = .false.,
+  univaroz            = .true.,
   regional            = .true., 
   adp_anglebc         = .true.,
   angord              = 4,
-  letkf_flag	      = .true.,
   use_edges           = .false.,
   emiss_bc            = .true.,
-  biasvar             = -500,
+  biasvar             = -500 
 /
  &satobs_enkf
   sattypes_rad(1)     = 'amsua_n15',     dsis(1) = 'amsua_n15',

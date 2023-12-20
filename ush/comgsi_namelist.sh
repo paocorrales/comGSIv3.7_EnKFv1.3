@@ -7,18 +7,19 @@ cat <<EOF > gsiparm.anl
    gencode=78,qoption=2,
    factqmin=0.0,factqmax=0.0,
    iguess=-1,
-   oneobtest=.false.,retrieval=.false.,
-   nhr_assimilation=4,l_foto=.false.,
+   oneobtest=${if_oneobtest},retrieval=.false.,
+   nhr_assimilation=2,l_foto=.false.,
    use_pbl=.false.,verbose=.true.,
    lread_obs_save=${if_read_obs_save},lread_obs_skip=${if_read_obs_skip},
    newpc4pred=.true.,adp_anglebc=.true.,angord=4,
    passive_bc=.true.,use_edges=.false.,emiss_bc=.true.,
+   lwrite_predterms=.true.,lwrite_peakwt=.true.,
    diag_precon=.true.,step_start=1.e-3,
-   l4densvar=.false.,nhr_obsbin=1,min_offset=60,
-   use_gfs_nemsio=.false.,
+   l4densvar=${if4d},nhr_obsbin=1,min_offset=60,
+   use_gfs_nemsio=${if_gfs_nemsio},
  /
  &GRIDOPTS
-   JCAP=62,JCAP_B=62,NLAT=200,NLON=240,nsig=65,regional=.true.,
+   JCAP=62,JCAP_B=62,NLAT=239,NLON=199,nsig=60,regional=.true.,
    wrf_nmm_regional=${bk_core_nmm},wrf_mass_regional=${bk_core_arw},
    nems_nmmb_regional=${bk_core_nmmb},nmmb_reference_grid='H',diagnostic_reg=.false.,
    filled_grid=.false.,half_grid=.true.,netcdf=${bk_if_netcdf},
@@ -38,7 +39,7 @@ cat <<EOF > gsiparm.anl
    dfact=0.75,dfact1=3.0,noiqc=.false.,c_varqc=0.02,vadfile='prepbufr',
  /
  &OBS_INPUT
-   dmesh(1)=120.0,dmesh(2)=60.0,dmesh(3)=30,time_window_max=0.5,ext_sonde=.true.,
+   dmesh(1)=120.0,dmesh(2)=60.0,dmesh(3)=30,time_window_max=1.5,ext_sonde=.true.,
  /
 OBS_INPUT::
 !  dfile          dtype       dplat     dsis                 dval    dthin dsfcalc
@@ -132,6 +133,16 @@ OBS_INPUT::
  &LAG_DATA
  /
  &HYBRID_ENSEMBLE
+   l_hyb_ens=${ifhyb},
+   uv_hyb_ens=.true.,
+   aniso_a_en=.false.,generate_ens=.false.,
+   n_ens=${nummem},
+   beta_s0=0.5,s_ens_h=110,s_ens_v=3,
+   regional_ensemble_option=1,
+   pseudo_hybens = .false.,
+   grid_ratio_ens = 1,
+   l_ens_in_diff_time=.true.,
+   ensemble_path='',
  /
  &RAPIDREFRESH_CLDSURF
  /
@@ -140,5 +151,8 @@ OBS_INPUT::
  &NST
  /
  &SINGLEOB_TEST
+   maginnov=1.0,magoberr=0.8,oneob_type='t',
+   oblat=38.,oblon=279.,obpres=500.,obdattim=${ANAL_TIME},
+   obhourset=0.,
  /
 EOF
