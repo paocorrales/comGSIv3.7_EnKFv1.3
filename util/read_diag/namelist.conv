@@ -1,0 +1,5 @@
+&iosetup
+  infilename='/home/paola.corrales/datosmunin3/EXP/E6_long/ANA//20181112220000/diagfiles/diag_conv_ges.ensmean',
+  outfilename='/home/paola.corrales/datosmunin3/EXP/E6_long/ANA//20181112220000/diagfiles/asim_conv_20181112220000.ensmean',
+ /
+

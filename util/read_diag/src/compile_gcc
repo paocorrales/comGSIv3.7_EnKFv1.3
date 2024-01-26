@@ -1,0 +1,3 @@
+gfortran read_diag_rad.f90 -o read_diag_rad.x -I/home/paola.corrales/datosmunin3/comGSIv3.7_EnKFv1.3/build/include/
+
+gfortran read_diag_conv.f90 -o read_diag_conv.x -I/home/paola.corrales/datosmunin3/comGSIv3.7_EnKFv1.3/build/include/

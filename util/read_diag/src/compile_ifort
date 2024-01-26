@@ -1,0 +1,5 @@
+ifort -o read_diag_rad.x read_diag_rad.f90 -I/glade/u/home/jruiz/comGSIv3.7_EnKFv1.3/build/include
+
+ifort -o read_diag_conv_iuse.x read_diag_conv.f90 -I/glade/u/home/jruiz/comGSIv3.7_EnKFv1.3/build/include
+
+ifort -o read_diag_conv.x read_diag_conv.f90 -I../../../build/include
