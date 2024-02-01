@@ -3,7 +3,6 @@ fix/crtm
 fix/Big_Endian
 libsrc/crtm/Big_Endian/
 util/Analysis_Utilities
-util/bufr_tools
 util/EnKF
 util/GEN_BE.comgsi
 util/gsienvreport.sh
